@@ -1,0 +1,55 @@
+// A launch configuration that compiles the extension and then opens it inside a new window
+// Use IntelliSense to learn about possible attributes.
+// Hover to view descriptions of existing attributes.
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}",
+                "${workspaceFolder}/test/src/test.zul",
+            ],
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm: watch"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jasmine Tests Current File",
+            "program": "${workspaceFolder}/node_modules/jasmine/bin/jasmine.js",
+            "runtimeExecutable": "node",
+            "runtimeArgs": [
+                "--nolazy",
+                "-r",
+                "ts-node/register/transpile-only"
+            ],
+            "args": [
+                "--config=./jasmine.json",
+                "${file}"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "skipFiles": [
+                "<node_internals>/**",
+                "node_modules/**"
+            ]
+        },
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Browser Preview: Attach"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Browser Preview: Launch",
+            "url": "http://localhost:3000"
+        }
+    ]
+}

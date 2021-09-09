@@ -1,0 +1,83 @@
+{
+    "name": "vscode-zk-autocomplete",
+    "displayName": "ZK",
+    "publisher": "zkoss",
+    "description": "ZUL editing helper",
+    "version": "0.1.0",
+    "preview": true,
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.40.0",
+        "node": "^12.18.3"
+    },
+    "icon": "images/zklogo.png",
+    "categories": [
+        "Programming Languages",
+        "Formatters"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zkoss/ZK-vscode-plugin"
+    },
+    "bugs": {
+        "url": "https://github.com/zkoss/ZK-vscode-plugin/issues"
+    },
+    "keywords": [
+        "zk",
+        "zul",
+        "completion"
+    ],
+    "activationEvents": [
+        "onLanguage:zk"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "zk",
+                "extensions": [
+                    ".zul"
+                ],
+                "configuration": "./src/language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "zk",
+                "scopeName": "source.zk",
+                "path": "./syntaxes/zk.tmLanguage.json"
+            }
+        ]
+    },
+    "scripts": {
+        "prepublish": "tsc -p ./src",
+        "compile": "tsc -p ./src",
+        "lint": "eslint ./src/**/*.ts",
+        "watch": "tsc -w -p ./src",
+        "test": "ts-node --project ./src/tsconfig.json node_modules/jasmine/bin/jasmine --config=jasmine.json",
+        "package": "vsce package",
+        "publish": "vsce publish",
+        "release": "standard-version"
+    },
+    "dependencies": {
+        "fs": "0.0.1-security",
+        "get-uri": "3.0.2",
+        "opn": "^6.0.0",
+        "sax": "1.2.4",
+        "vscode-cache": "^0.3.0"
+    },
+    "devDependencies": {
+        "@types/jasmine": "^3.6.3",
+        "@types/node": "^14.14.27",
+        "@types/vscode": "^1.40.0",
+        "@typescript-eslint/eslint-plugin": "^4.15.0",
+        "@typescript-eslint/parser": "^4.15.0",
+        "eslint": "^7.20.0",
+        "jasmine": "^3.6.4",
+        "ovsx": "^0.1.0-next.a9154dc",
+        "standard-version": "^9.1.0",
+        "ts-node": "^9.1.1",
+        "typescript": "^4.1.5",
+        "vsce": "^1.85.0"
+    }
+}

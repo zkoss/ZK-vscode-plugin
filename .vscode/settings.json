@@ -1,0 +1,21 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "javascript.validate.enable": false,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "files.trimTrailingWhitespace": true,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.renderWhitespace": "all",
+    "files.exclude": {
+        "out": false
+    },
+    "search.exclude": {
+        "out": true
+    },
+    "cSpell.words": [
+        "ovsx",
+        "zklogo",
+        "zkoss"
+    ]
+}
