@@ -1,0 +1,122 @@
+{
+    "name": "vscode-zk-autocomplete",
+    "displayName": "ZK",
+    "publisher": "zkoss",
+    "description": "ZUL editing helper",
+    "version": "1.0.0",
+    "preview": true,
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.40.0",
+        "node": "^12.18.3"
+    },
+    "icon": "images/zklogo.png",
+    "categories": [
+        "Programming Languages",
+        "Linters"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zkoss/vscode-autocomplete.git"
+    },
+    "bugs": {
+        "url": "https://github.com/zkoss/vscode-autocomplete/issues"
+    },
+    "keywords": [
+        "zk",
+        "zul",
+        "completion",
+        "linter",
+        "lint"
+    ],
+    "activationEvents": [
+        "onLanguage:zk"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "zk",
+                "extensions": [
+                    ".zul"
+                ],
+                "configuration": "./src/language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "zk",
+                "scopeName": "source.zk",
+                "path": "./syntaxes/zk.tmLanguage.json"
+            }
+        ],
+        "configuration": {
+            "title": "XmlComplete",
+            "type": "object",
+            "properties": {
+                "xmlComplete.formattingStyle": {
+                    "description": "Defines if attributes should be single line or not.",
+                    "type": "string",
+                    "enum": [
+                        "singleLineAttributes",
+                        "multiLineAttributes",
+                        "fileSizeOptimized"
+                    ],
+                    "scope": "resource"
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "myExtension.myCommand",
+                "title": "My Custom Command"
+            }
+        ],
+        "views": {
+            "explorer": [
+                {
+                    "id": "myCustomView",
+                    "name": "My Custom View",
+                    "contextualTitle": "My Custom View"
+                }
+            ]
+        },
+        "viewsWelcome": [
+            {
+                "view": "myCustomView",
+                "contents": "Welcome to my custom view! [learn more](https://google.com/).\n[Get Started](command:myExtension.myCommand)"
+            }
+        ]
+    },
+    "scripts": {
+        "prepublish": "tsc -p ./src",
+        "compile": "tsc -p ./src",
+        "lint": "eslint ./src/**/*.ts",
+        "watch": "tsc -w -p ./src",
+        "test": "ts-node --project ./src/tsconfig.json node_modules/jasmine/bin/jasmine --config=jasmine.json",
+        "package": "vsce package",
+        "publish": "vsce publish",
+        "release": "standard-version"
+    },
+    "dependencies": {
+        "fs": "0.0.1-security",
+        "get-uri": "3.0.2",
+        "opn": "^6.0.0",
+        "sax": "1.2.4",
+        "vscode-cache": "^0.3.0"
+    },
+    "devDependencies": {
+        "@types/jasmine": "^3.6.3",
+        "@types/node": "^14.14.27",
+        "@types/vscode": "^1.40.0",
+        "@typescript-eslint/eslint-plugin": "^4.15.0",
+        "@typescript-eslint/parser": "^4.15.0",
+        "eslint": "^7.20.0",
+        "jasmine": "^3.6.4",
+        "ovsx": "^0.1.0-next.a9154dc",
+        "standard-version": "^9.1.0",
+        "ts-node": "^9.1.1",
+        "typescript": "^4.1.5",
+        "vsce": "^1.85.0"
+    }
+}

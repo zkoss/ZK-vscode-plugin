@@ -1,0 +1,14 @@
+<zk>
+    <grid width="200px">
+        <columns>
+            <column hflex="1" label="A" />
+            <column hflex="1" label="B" />
+        </columns>
+        <rows>
+            <row>
+                <label value="A" />
+                <label value="B" />
+            </row>
+        </rows>
+	</grid>
+</zk>
