@@ -3,7 +3,7 @@
     "displayName": "ZK",
     "publisher": "zkoss",
     "description": "ZUL editing helper",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "preview": true,
     "license": "MIT",
     "engines": {
