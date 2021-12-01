@@ -65,7 +65,7 @@ async function loadWelcomeMsg() {
             vscode.window.showInformationMessage(news + ' Visit zkoss.org for details.', 'GO')
                 .then((selection) => {
                     if (selection != undefined)
-                        vscode.env.openExternal(vscode.Uri.parse('https://www.zkoss.org/#news-sec'));
+                        vscode.env.openExternal(vscode.Uri.parse('https://www.zkoss.org/?ide=vs&fetch=true&read=more#news-sec'));
                 });
             fs.writeFile(filePath, news, function (error) {
                 if (error) return;
