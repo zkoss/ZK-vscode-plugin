@@ -14,9 +14,7 @@ export default class XsdParser {
                 const result: XmlTagCollection = new XmlTagCollection();
                 const xmlDepthPath: { tag: string, resultTagName: string }[] = [];
 
-                let calls = 0;
                 parser.onopentag = (tagData: { name: string, isSelfClosing: boolean, attributes: Map<string, string> }) => {
-                    calls++;
                     xmlDepthPath.push({
                         tag: tagData.name,
                         resultTagName: tagData.attributes["name"]
@@ -88,7 +86,6 @@ export default class XsdParser {
                 };
 
                 parser.onclosetag = (name: string) => {
-                    calls++;
                     const popped = xmlDepthPath.pop();
 
                     if (popped?.tag !== name) {
@@ -97,8 +94,6 @@ export default class XsdParser {
                 };
 
                 parser.ontext = (t: string) => {
-                    calls++;
-
                     if (/\S/.test(t) && xmlDepthPath.some(e => e.tag.endsWith(":documentation"))) {
                         const stack = xmlDepthPath
                             .filter(e => e?.resultTagName !== undefined)

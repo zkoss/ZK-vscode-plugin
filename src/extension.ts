@@ -6,6 +6,9 @@ import AutoCompletionProvider from './autocompletionprovider';
 import XmlDefinitionProvider from './definitionprovider';
 import XsdCachedLoader from './helpers/xsdcachedloader';
 
+import XmlFormatProvider from './formatprovider';
+import XmlRangeFormatProvider from './rangeformatprovider';
+
 export declare let globalSettings: XmlCompleteSettings;
 
 export const languageId = 'zk';
@@ -33,8 +36,18 @@ export function activate(context: vscode.ExtensionContext): void {
 
     const autocompletionprovider = new AutoCompletionProvider(context, schemaPropertiesArray);
 
+    const formatprovider = vscode.languages.registerDocumentFormattingEditProvider(
+        { language: languageId, scheme: 'file' },
+        new XmlFormatProvider(context, schemaPropertiesArray));
+
+    const rangeformatprovider = vscode.languages.registerDocumentRangeFormattingEditProvider(
+        { language: languageId, scheme: 'file' },
+        new XmlRangeFormatProvider(context, schemaPropertiesArray));
+
     context.subscriptions.push(
         completionitemprovider,
+        formatprovider,
+        rangeformatprovider,
         definitionprovider,
         linterprovider,
         autocompletionprovider);
